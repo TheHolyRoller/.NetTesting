@@ -12,3 +12,4 @@ C:\Users\User\Documents\.NetTesting\obj\Debug\net8.0\refint\.NetTesting.dll
 C:\Users\User\Documents\.NetTesting\obj\Debug\net8.0\.NetTesting.pdb
 C:\Users\User\Documents\.NetTesting\obj\Debug\net8.0\.NetTesting.genruntimeconfig.cache
 C:\Users\User\Documents\.NetTesting\obj\Debug\net8.0\ref\.NetTesting.dll
+C:\Users\User\Documents\.NetTesting\obj\Debug\net8.0\.NetTesting.sourcelink.json
