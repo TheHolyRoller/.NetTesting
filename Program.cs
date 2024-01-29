@@ -91,6 +91,7 @@ just return the values.
 bool[] arr = { true, true, true, false };
 
 
+
 // Create the operator here 
 
 string op = "AND";
@@ -102,7 +103,8 @@ bool result;
 
 // Create the two counter variables here 
 int counter1 = 0;
-int counter2 = 1; 
+int counter2 = 1;
+bool first = arr[0]; 
 
 // Add in the two boolean variables here 
 
@@ -113,24 +115,28 @@ if(String.Equals(op, "AND")){
 
         // Run the AND for loop here 
         Console.WriteLine("Runnning the And loop "); 
-        for(int i = 0; i < arr.Length; i++){
+        for(int i = 1; i < arr.Length; i++){
 
                 // Perform the And operations here 
-                result = arr[counter1] && arr[counter2];
-                counter1++;
-                counter2++;
+                first = first && arr[i];
+                Console.WriteLine("this is the current result ");
+                Console.WriteLine(first); 
+                
+                Console.WriteLine("this is the current index");
+                Console.WriteLine(i); 
+                
 
-                Type type = result.GetType();
-                Console.WriteLine("this is the type of result");
-                Console.WriteLine(type.Name); 
+                // Type type = result.GetType();
+                // Console.WriteLine("this is the type of result");
+                // Console.WriteLine(type.Name); 
                 
                 
-                Console.WriteLine("this is the current result of boolean result");
-                Console.WriteLine(result);
-                Console.WriteLine("this is the current value of counter1");
-                Console.WriteLine(counter1);
-                Console.WriteLine("this is the current value of counter2");
-                Console.WriteLine(counter2); 
+                // Console.WriteLine("this is the current result of boolean result");
+                // Console.WriteLine(result);
+                // Console.WriteLine("this is the current value of counter1");
+                // Console.WriteLine(counter1);
+                // Console.WriteLine("this is the current value of counter2");
+                // Console.WriteLine(counter2); 
                 
         
         }
@@ -147,16 +153,16 @@ for(int i = 0; i < arr.Length; i++){
 
 
                 result = arr[counter1] || arr[counter2];
-                counter1++;
-                counter2++;
-                Console.WriteLine("this is the current value of boolean result");
-                Console.WriteLine(result);
-                Console.WriteLine("this is the current value of the first counter");
-                Console.WriteLine(counter1);
-                Console.WriteLine("this is the current value of the second counter");
-                Console.WriteLine(counter2);
-                Console.WriteLine("this is the current value of the i incrementor");
-                Console.WriteLine(i); 
+                // counter1++;
+                // counter2++;
+                // Console.WriteLine("this is the current value of boolean result");
+                // Console.WriteLine(result);
+                // Console.WriteLine("this is the current value of the first counter");
+                // Console.WriteLine(counter1);
+                // Console.WriteLine("this is the current value of the second counter");
+                // Console.WriteLine(counter2);
+                // Console.WriteLine("this is the current value of the i incrementor");
+                // Console.WriteLine(i); 
                 
 
 
@@ -174,21 +180,21 @@ else{
 
 
         // Create the for loop here 
-        for(int i = 0; i < arr.Length; i++){
+        for(int i = 1; i < arr.Length; i++){
         
         
         result = arr[counter1] ^ arr[counter2];
-                counter1++;
-                counter2++;
+                // counter1++;
+                // counter2++;
 
-                Console.WriteLine("this is the current boolean result");
-                Console.WriteLine(result);
-                Console.WriteLine("this is the current value of counter1");
-                Console.WriteLine(counter1);
-                Console.WriteLine("this is the current value of counter2");
-                Console.WriteLine(counter2);
-                Console.WriteLine("this is the current value of i incrementor");
-                Console.WriteLine(i); 
+                // Console.WriteLine("this is the current boolean result");
+                // Console.WriteLine(result);
+                // Console.WriteLine("this is the current value of counter1");
+                // Console.WriteLine(counter1);
+                // Console.WriteLine("this is the current value of counter2");
+                // Console.WriteLine(counter2);
+                // Console.WriteLine("this is the current value of i incrementor");
+                // Console.WriteLine(i); 
                 
         
         
@@ -198,6 +204,12 @@ else{
 
 
 }
+
+
+Console.WriteLine("this is the final result of the for loop ");
+Console.WriteLine(first); 
+
+
 
 
 // Iterate through the Array here 
