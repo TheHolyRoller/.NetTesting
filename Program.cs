@@ -98,8 +98,6 @@ else{
 
 
         Console.WriteLine("You need to upgrade your skills"); 
-        
-
 }
 
 
