@@ -8,28 +8,56 @@ using System.Text;
 
 
 
-/* 
+/*
+Okay so I'm given an input string 
 
-Okay so basically all I need to do is 
+and I need to return the length of that string 
 
-check the value of the double that is 
+but I also need to return the number of letters 
 
-passed into a function. 
+in that string that should now be there. 
 
-If it meets a certain threshold then 
+So I'm thinking I need to use some sort of regex pattern 
 
-I want to return a certain character. 
+in order to match up any of the letters in the string 
 
-So I'll need to start with a base chase and then I 
+with the letters that should not be in the string. 
 
-could use a series of else if statements or I could 
+Okay so basically what I think would be a good start is to 
 
-use a switch statement. 
+turn the string into a char array and then loop through that 
+char array and then check each char in that char array and see if it matches the 
 
-I think I'll go with switch because I need some practice in 
-that. 
+regex expression for the letters that should not be in there and if they 
 
-Okay so first of all. 
+are in there then a counter variable is incremented each time. 
+
+This counter variable will be incremented each time there is a wrong 
+character in the string and thus will keep track of all the errors in the 
+string. 
+
+So basically at the end I can print out the counter variable along with the length 
+
+of the control string and see if it matches up with the test on code wars. 
+
+Okay so that sounds great. First of all let's start with the input string. 
+
+Then I'll get going on making the regex expression. 
+
+Okay so the main bulk of the program is finished now let's just work out how 
+
+I'm going to properly return the a string with the number of mistakes as 
+the numerator and the length of the string as the denominator. 
+
+Okay so first of all. I need to get both numbers as integers and then I need to use 
+
+string interpolation and string concatenation in order to create one 
+
+main string that I'll return. 
+
+Okay so I'll create the integers now and then I'll work out how to turn them into strings. 
+Then I'll work out how to concatenate the two strings together with the 
+slash symbol that they need. 
 
 
 
@@ -39,67 +67,78 @@ Okay so first of all.
 */
 
 
-// Create the double variables here 
 
-double A = 0.9;
-
-double B = 0.8;
-
-double C = 0.7; 
-
-double D = 0.6;
+// Put your program code here 
 
 
-// Create the main variable that will be used as 
-// a Test case
+// Create the Input String here 
 
-double grade = A;
-
-Console.WriteLine("this is the grade that has been passed down");
-Console.WriteLine(grade);
-
-Type type = grade.GetType(); 
-
-Console.WriteLine("this is the type of grade"); 
-Console.WriteLine(type.Name); 
+String controlInput = "aaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbmmmmmmmmmmmmmmmmmmmxyz";
 
 
-if(grade >= 0.9){
 
-        Console.WriteLine("Congratulations you acheived an A"); 
-        
+// Create the regex expression here 
 
-}
-
-else if(grade >= 0.8){
-
-        Console.WriteLine("You acheived a B"); 
-        
+String regex = "[o-zO-Z]";
 
 
-}
+// Create the counter variable here 
 
-else if(grade >= 0.7){
+int mistakes = 0;
 
-        Console.WriteLine("YOU SCORED A C"); 
-        
+// Turn the String into a character Array here 
+char[] charArray = controlInput.ToCharArray(); 
 
+
+// Create an Array that holds all the matches from the character Array using the regex 
+// Expression here and then I can loop through that Array later 
+        MatchCollection matches = Regex.Matches(controlInput, regex);
+
+
+// Loop through the Char Array Using the Matches Type and Record the Number of Mistakes 
+// Increment the counter variable each loop since using the Matches collection the loop 
+// Will only iterate over an element that is a match in the character Array. 
+
+foreach(Match match in matches){
+
+    mistakes++;
+    Console.WriteLine("A Mistake was found");
+    Console.WriteLine("this is the match that was found");
+    Console.WriteLine(match); 
+    
 
 }
 
-else if(grade >= 0.6){
+Console.WriteLine("this is the final amount of mistakes"); 
 
-        Console.WriteLine("you scored a D work harder"); 
-        
+Console.WriteLine(mistakes);
 
-}
+// Get the length of the input string here and save it as an integer 
+int len = controlInput.Length;
 
-else{
+Console.WriteLine("this is the length of the control input string");
+Console.WriteLine(len);
+
+// Now turn the number of mistakes and the length of the string into a string here 
+ String mist = mistakes.ToString();
+Console.WriteLine("this is the number of mistakes converted to a string");
+Console.WriteLine(mist);
+
+// Now Turn the length into a string 
+string strLen = len.ToString();
+
+Console.WriteLine("this is the length converted to a string");
+Console.WriteLine(strLen);
 
 
-        Console.WriteLine("You need to upgrade your skills"); 
-}
+// Now concatenate the strings 
+String res = mist + "/" + strLen;
+
+Console.WriteLine("this is the final concatenated String");
+Console.WriteLine(res); 
+
+Console.WriteLine("Hello World!"); 
 
 
 
-Console.WriteLine("Hello, World!");
+
