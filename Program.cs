@@ -8,94 +8,95 @@ using System.Text;
 
 
 
+
 /*
 
-Okay so I think I know the basic requirements of what needs 
-to be returned. 
+Okay so this is quite a simple Kata. 
 
-First of all I am given a discrete non negative 
-integer and the task is to return the factorial of that 
+Basically what I need to do is remove one and only 
+one exclamation mark from the end of a string. 
 
-integer. 
+This needs to be truly at the end of a string 
+if there is an exclamation mark before the end of a string 
+it must not be removed. 
 
-So a factorial is a number that is multiplied by all the numbers 
-that is contained within it up to and including 1. 
+If there is an exclamation mark after one word in a string 
+and there is another word after that and 
+it does not contain an exclamation mark then no 
 
-So basically the number 3 would be multiplied by three 
-2 and once. 
+exclamation mark is removed. 
 
-So three would be multiplied by three which would 
-result in 3 and then it would be multiplied by 2 which would 
-result in 6 and then six would be multiplied by three 
-which would result in 18. 
+Okay so it also looks like the exclamation mark 
 
+must be right at the end of a string. 
 
-Okay so the number is multiplied by taking the number 
+So if it's not the last character of a string then 
 
-itself and then multiplying the number itself with the 
+no exclamation mark needs to be removed. 
 
-next number down from that so one less than the actual number. 
+So basically I need to check the last character of a 
 
-Then the result of multiplying those two numbers together 
-is multiplied by the next number down until the number one 
-is reached and the result is multiplied by one which 
-means that the result will stay the same. 
+string and see if it matches an exclamation mark. 
 
+If it does then it should be removed and if not 
 
-Okay so I'm given an integer and I need to multiply that 
-integer with another integer one less that the original 
-integer and then I need to take the result and multiply 
-that result with another integer less than the integer 
-that was multiplied with the original integer and was one 
-less than the original integer. 
+nothing should be done. 
+
+Okay so that sounds good so the basic tasks are creating the 
+input string and then turning that string into a char 
+array and then creating a regex expression for the exclamation mark 
+and then accessing the last element of the char Array and then if it matches 
+the regex removing it. 
+
+Okay so that sounds good. 
 
 
-Okay so just to clarify things I'll need a variable that 
-will hold my current product and then I'll need another 
-variable that will hold the current multiplicand. 
-
-So this will be the previous number that had one deducted from it 
-and this number will be the previous number minus one. 
-
-It would be nice if I could write the program in a recursive 
-manner but let's try and write the program using a 
-
-loop first. So the then the steps are create the input integer and then 
-create the loop that will loop the length of the input integer and 
-will multiple all the numbers contained in the input integer. 
 
 
 
 
 */
 
-int input = 4;
+String input = "Hi!!";
+
+Console.WriteLine("this is the input");
+Console.WriteLine(input); 
 
 
-// Create the current product variable here 
-int currentProduct = input;
 
-int mult = input;
+// Now convert the string into a character Array 
 
-int iterator = 0; 
-// Create the loop here 
-while( iterator < input -1){
+char[] arr = input.ToCharArray();
 
-    mult = mult - 1; 
-    currentProduct *= mult;
-    Console.WriteLine("this is the current product");
-    Console.WriteLine(currentProduct); 
+Console.WriteLine("this is the character array");
+Console.WriteLine(arr);
 
-    // Increment the iterator here 
-    iterator++;
 
-    Console.WriteLine("this is the current iterator");
-    Console.WriteLine(iterator); 
+// Create the regex expression here 
+char mark = '!'; 
+
+
+
+char lastElem = arr[arr.Length - 1];
+
+Console.WriteLine("this is the last element");
+Console.WriteLine(lastElem); 
+
+if(lastElem == mark){
+
+    Console.WriteLine("they are alike");
+    Console.WriteLine("this is the last elem");
+    Console.WriteLine(lastElem);
+    Console.WriteLine("this is the mark");
+    Console.WriteLine(mark);
     
-
-
+    
+    input = input.Remove(input.Length - 1); 
 }
 
+// Log the updated string to the console here 
+Console.WriteLine("this is the updated string");
+Console.WriteLine(input); 
 
 
 Console.WriteLine("Hello World!"); 
