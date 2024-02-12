@@ -189,7 +189,11 @@ Console.WriteLine(teamOne);
 
 finalArray[1] = teamTwo;
 Console.WriteLine("this is the team two total");
-Console.WriteLine(teamTwo); 
+Console.WriteLine(teamTwo);
+
+
+Console.WriteLine("this is the length of the final array");
+Console.WriteLine(finalArray.Length); 
 
 
 
