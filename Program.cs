@@ -11,92 +11,75 @@ using System.Text;
 
 /*
 
-Okay so this is quite a simple Kata. 
+Okay so it seems like this is a really simple challenge. 
 
-Basically what I need to do is remove one and only 
-one exclamation mark from the end of a string. 
+I'm given two parameters. The first parameter is 
 
-This needs to be truly at the end of a string 
-if there is an exclamation mark before the end of a string 
-it must not be removed. 
+the name and the second parameter is the price which is a double. 
 
-If there is an exclamation mark after one word in a string 
-and there is another word after that and 
-it does not contain an exclamation mark then no 
+It costs 30 dollars per character including spaces in order to put one's 
 
-exclamation mark is removed. 
-
-Okay so it also looks like the exclamation mark 
-
-must be right at the end of a string. 
-
-So if it's not the last character of a string then 
-
-no exclamation mark needs to be removed. 
-
-So basically I need to check the last character of a 
-
-string and see if it matches an exclamation mark. 
-
-If it does then it should be removed and if not 
-
-nothing should be done. 
-
-Okay so that sounds good so the basic tasks are creating the 
-input string and then turning that string into a char 
-array and then creating a regex expression for the exclamation mark 
-and then accessing the last element of the char Array and then if it matches 
-the regex removing it. 
-
-Okay so that sounds good. 
+name on the billboard so the task is to calculate the cost of putting 
+one's name on the billboard. 
 
 
+So basically the way I'm going to go about this is to take the string which 
+
+is the name and then turn it into a character array. 
+
+Then I'll take the length of that character array and then multiply that 
+number by the cost of each letter and then I'll store the result in a double 
+and return that result. 
+
+
+Okay so that sounds pretty good. 
 
 
 
 
 */
 
-String input = "Hi!!";
 
-Console.WriteLine("this is the input");
-Console.WriteLine(input); 
+// Create the name input here 
+string name = "Jeong-Ho Aristotelis";
+Console.WriteLine("this is the name input");
+Console.WriteLine(name); 
+Console.WriteLine("this is the type of the name variable");
+Console.WriteLine(name.GetType().Name);
 
-
-
-// Now convert the string into a character Array 
-
-char[] arr = input.ToCharArray();
-
-Console.WriteLine("this is the character array");
-Console.WriteLine(arr);
-
-
-// Create the regex expression here 
-char mark = '!'; 
+// Create the price input here 
+double price = 30;
+Console.WriteLine("this is the price per character");
+Console.WriteLine(price); 
+Console.WriteLine("this is the type of the price variable");
+Console.WriteLine(price.GetType().Name);
 
 
+char[] arr = name.ToCharArray();
+Console.WriteLine("this is the type of the arr variable");
+Console.WriteLine(arr.GetType().Name);
 
-char lastElem = arr[arr.Length - 1];
+Console.WriteLine("this is the character Array converted from the string");
+Console.WriteLine(arr); 
 
-Console.WriteLine("this is the last element");
-Console.WriteLine(lastElem); 
 
-if(lastElem == mark){
+int len = arr.Length;
+Console.WriteLine("this is the length of the character Array");
+Console.WriteLine(len);
+Console.WriteLine("this is the type of the length variable");
+Console.WriteLine(len.GetType().Name); 
 
-    Console.WriteLine("they are alike");
-    Console.WriteLine("this is the last elem");
-    Console.WriteLine(lastElem);
-    Console.WriteLine("this is the mark");
-    Console.WriteLine(mark);
-    
-    
-    input = input.Remove(input.Length - 1); 
-}
 
-// Log the updated string to the console here 
-Console.WriteLine("this is the updated string");
-Console.WriteLine(input); 
+
+
+double cost = price * len;
+Console.WriteLine("this is the cost of the name");
+Console.WriteLine(cost); 
+Console.WriteLine("this is the type of the cost variable");
+Console.WriteLine(cost.GetType().Name);
+
+// Print out the types of these variables here 
+
 
 
 Console.WriteLine("Hello World!"); 
