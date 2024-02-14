@@ -1,5 +1,4 @@
-﻿// Add in the imports here 
-using System;
+﻿using System;
 using System.Text.RegularExpressions; 
 using System.Collections.Generic;
 using System.Diagnostics.Metrics;
@@ -9,154 +8,148 @@ using System.Text;
 
 /*
 
-Okay so it seems like the overall concept is pretty simple. 
 
-First of all I need to calculate how many people are on the best at the end of the 
+Okay so I think I'm starting to get an idea of how this all works. 
 
-day when the bus has reached it's final destination. 
+First of all I'm given the total number of blue & red marbles. 
 
-Okay so in theory what I need to do is have one sum variable that keeps track 
+Then I'm given the number of blue and red marbles taken out. 
 
-of the total number of people on the bus. 
-
-Then I take each pair that I'm given and I take the first number and I subtract the 
-
-second number from the first number and I store the result in an integer variable 
-
-then this integer variable stores the number of people that have currently got on the 
-bus or the number of people that are getting off the bus at any given stop 
-thus the number could be positive therefore the number of people on the bus will 
-be increasing or the number could be negative and thus the number of people on the 
-bus will be decreasing. 
-
-It should not matter too much if the number that results from the subtraction of 
-
-the number pairs is negative because if you add a negative number to a positive 
-
-number it's the same as subtraction. 
-
-Okay so that sounds great. 
-
-There are a few unknowns remaining. 
-
-First of all I'm not sure how this whole list pair thing works. 
-
-I'm also, not sure when one list ends and another begins. 
-
-I'm also, not sure how to extract the first and second element of a list pair 
-separately. 
+Then I need to get the total number of marbles and then I need to 
 
 
-Okay so it seems like things are more clear at the moment. 
+get the total number of blue and then red marbles minus the ones 
 
-So basically I'm going to have a variable that keeps track of the total 
+that have been taken out. 
 
-a ephemeral variable that is going to hold the current result of the difference 
+So basically I need to calculate the total number of marbles that have been 
+taken out by adding up the blue and red marbles and then find the difference 
+of that between the marbles that have been added into the bag. 
 
-of the two numbers of a pair and then I'm going to add that difference of that 
+Then one I have the difference I have the net total number of marbles in the 
+bag. 
 
-pair to the main total variable. 
+Once I have that number then I need to calculate the net total number 
 
-The way I'm going to access each pair is through the use of a for each loop. 
+of red marbles and then the net total of blue marbles. 
 
-Then I'll access the first and second element of each element that is looped through 
-and I'll get the difference of each pair and then I'll add the difference to the 
+Then once I have that number I can divide it by the total amount of marbles 
+that there are in the bag and get back a decimal number so a 
+double and this should be the probability of getting a 
+marble of a certain color. 
 
-total. 
+The only problem is now I'm not sure what I need to return. 
+
+Do I need to return the probability of getting a blue & red marble 
+
+in the same number or do I need to return the probability of return a blue 
+marble or a red marble? 
 
 
-Okay so that seems quite straight forward. 
+So what I can do is experiment and see what combination returns the result 
+required as shown in the tests. 
 
-So first of all I'm going to construct the list of pairs. 
 
-Then I'm going to create the variables. 
+Okay so it seems as though things are clearer. 
 
-Then I'm going to loop through the List perform the actions and 
 
-then print out the result. 
+First of all I only need to calculate the probability of reaching 
+for a blue marble. 
+
+I don't need to calculate the probability of reaching for a red marble. 
+
+Okay so let's just recap. 
+
+In order to find the actual probability of reaching for a blue marble 
+
+I need to calculate the number of net marbles in the bag. 
+
+Then I need to calculate the number of blue marbles and then divide 
+that number by the total number of marbles in the bag including the 
+blue marbles in the bag. 
+
+Then once that is done then I have the probability of reaching for a 
+blue marble. 
 
 
 
+Okay so now let's create the input variables and then 
+
+I'll add the logic into the function that will do the addition subtraction 
+and necessary calculation tasks. 
+
+Then I can print out the resulting number. 
 
 
+Okay so first of all I'll need the total number of blue marbles and then 
+the total number of red marbles. 
 
+Then I'll need the total number of blue & red marbles being removed. 
+
+Then I'll need variables to store the net number of blue & red marbles and 
+
+then I'll need another variable to store the total number of marbles in the 
+bag. 
+
+Then I'll need to create a simple sub-routine in order to calculate the 
+probability of choosing a blue marble. 
 
 
 */
 
+// Create the variable to hold the number of blue marbles here 
+uint blueMarbles = 5;
 
-List<(int, int)> list = new List<(int, int)>()
-{
-    (3, 0),
-    (9, 1),
-    (4, 8), 
-    (12, 2), 
-    (6, 1), 
-    (7, 8)
-};
+uint redMarbles = 5;
 
-// Log the type of the list here 
-Console.WriteLine("this is the type of list");
-Console.WriteLine(list.GetType().Name); 
+uint bluePulled = 2;
+
+uint redPulled = 3;
 
 
-
-// Create the total variable here 
-int total = 0;
-
-// Create the difference variable here 
-int difference = 0; 
+uint totalMarbles = 0;
 
 
-// Loop through the List here 
-foreach(var elem in list){
+uint totalBlue = 0;
 
-    Console.WriteLine("this is the current pair item");
-    Console.WriteLine(elem);
 
-    Console.WriteLine("this is the type of element");
-    Console.WriteLine(elem.GetType().Name); 
-    
 
-    Console.WriteLine("this is the first pair item");
-    Console.WriteLine(elem.Item1);
+// Calculate the total number of Red marbles 
+uint totalRed = redMarbles - redPulled;
+Console.WriteLine("this is the net total number of red marbles minus the ones removed");
+Console.WriteLine(totalRed); 
 
-    Console.WriteLine("this is the type of the first item of the pair");
-    Console.WriteLine(elem.Item1.GetType().Name); 
-    
 
-    Console.WriteLine("this is the second item of the current pair");
-    Console.WriteLine(elem.Item2); 
-    
 
-    // Get the two pairs here 
-    difference = elem.Item1 - elem.Item2;
+// Calculate the total number of blue marbles here 
 
-    Console.WriteLine("this is the difference of the two pairs");
-    Console.WriteLine(difference); 
+uint blueTotal = blueMarbles - bluePulled;
 
-    // Get the difference of the two pairs here 
-    total += difference;
+Console.WriteLine("this is the net total number of blue marbles after some have been removed");
+Console.WriteLine(blueTotal); 
 
-    Console.WriteLine("this is the new total ");
-    Console.WriteLine(total); 
-    
-    // Add the difference onto the total here 
-    difference = 0;
 
-    Console.WriteLine("this is the reset difference");
-    Console.WriteLine(difference); 
-    
-    
-    
-    
-    // Reset the difference variable here 
+
+// Calculate the total number of marbles here 
+
+totalMarbles = blueTotal + totalRed;
+
+Console.WriteLine("this is the net total number of marbles");
+Console.WriteLine(totalMarbles); 
+
+
+
+// Calculate the probability of choosing a blue marble here 
+
+// double blueProb = blueTotal / totalMarbles;
+double blueProb = blueTotal / totalMarbles;
+
+Console.WriteLine("this is the probability of choosing blue");
+Console.WriteLine(blueProb); 
 
 
 
 
-
-}
 
 
 
