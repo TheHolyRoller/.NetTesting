@@ -7,66 +7,98 @@ using System.Text;
 
 /*
 
-Okay so I think one of the ways this could work is to take the n 
 
-which is the total number of blue beads and divide it by two because 
-every two sets of blue beads there is an extra red bead 
-so one more red bead than there is a blue bean. 
+Okay so basically I'm given the number of mangoes that is being 
 
-Then if I did the modulus operator then I could also get the remainder and if 
-the remainder is less than two then I could just add one onto the division 
-of that number by two. 
+bought and the price for each mango. 
 
-Then I take the current number of blue beads and I add this extra 
+The discount for mangoes is if three mangoes are bought 
+one of those three is for free if more than three mangoes is bought 
+and the total number is less than two sets of three then 
+one mango is free. 
 
-number onto it. 
+So basically there is one mango for free for every set of three 
+mangoes and the free mango is included in that set of three. 
 
-Okay so that sounds great. 
+So if you buy three mangoes you pay for two. 
+
+
+Then if you buy six mangoes that is two sets of three and 
+because it's two sets of three then you get one mango for free 
+
+for each set of three that you bought. 
+
+
+Okay so the way I'm going to do this is by dividing the number by three 
+
+and flooring the result so that the result is a whole positive integer. 
+
+Then I can take the integer and subtract is from the total number 
+
+of mangoes bought and then I can the number of mangoes 
+being bought after the discount is applied and then I can multiply that 
+number with the price and get the actual price paid for the mangoes 
+
+with the discount applied. 
+
+Okay so first of all I'll need the mango number and price input. 
+
+Then I'll move on from there 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 */
 
+int quantity = 13;
 
-int blueBeads = 2466;
-
-Console.WriteLine("this is the blue beads"); 
-
-Console.WriteLine(blueBeads); 
+int price = 5;
 
 
-// Now divide 5 by two 
+// Create the sub routine to divide the quantity and floor the result 
 
-int redBeads = blueBeads / 2;
+// var discount = (int)Math.Floor(quantity / 3);
+var numPairs = (int)Math.Floor((double)quantity / 3); // cast to double
 
-Console.WriteLine("this is the division result");
-Console.WriteLine("this is the redBeads number also");
-Console.WriteLine(redBeads); 
-
-if(redBeads >= 2){
-
-double remainder = 5 % 2;
-Console.WriteLine("this is the remainder");
-Console.WriteLine(remainder); 
+Console.WriteLine("this is the numPairs");
+Console.WriteLine(numPairs);
 
 
-if(remainder < 2 && remainder > 0){
-    redBeads += 1; 
+// Now apply that discount to the price 
 
-}
-
-}
-
-int totalRedBeads = blueBeads + redBeads; 
+int discount  = quantity - numPairs;
 
 
+int actualPrice = discount * price;
 
-Console.WriteLine("this is the updated red bead number");
-Console.WriteLine(redBeads);
-
-
-Console.WriteLine("this is the red bead total after the calculations");
-Console.WriteLine(totalRedBeads); 
+Console.WriteLine("this is the actual price");
+Console.WriteLine(actualPrice); 
 
 
 
