@@ -7,98 +7,90 @@ using System.Text;
 
 /*
 
+Okay so it seems as though the task 
 
-Okay so basically I'm given the number of mangoes that is being 
+is pretty simple I just need to return true 
 
-bought and the price for each mango. 
+if the animal is bringing a disk that has a name with it's 
+starting and ending letters the same as the starting and ending letters of 
+their name 
 
-The discount for mangoes is if three mangoes are bought 
-one of those three is for free if more than three mangoes is bought 
-and the total number is less than two sets of three then 
-one mango is free. 
+So basically I'm given the name of an animal in a string and 
+I'm given the name of a dish in a string and I need to determine if 
 
-So basically there is one mango for free for every set of three 
-mangoes and the free mango is included in that set of three. 
+the starting and ending letters match the starting and ending letters 
 
-So if you buy three mangoes you pay for two. 
+of the dish. 
 
+Okay so this should be quite simple. 
 
-Then if you buy six mangoes that is two sets of three and 
-because it's two sets of three then you get one mango for free 
+I'll turn both the animal name and the dish name into character Arrays 
 
-for each set of three that you bought. 
+Then I'll take the first and last character from the Animal Name and the 
+first and last character from the dish name. 
 
-
-Okay so the way I'm going to do this is by dividing the number by three 
-
-and flooring the result so that the result is a whole positive integer. 
-
-Then I can take the integer and subtract is from the total number 
-
-of mangoes bought and then I can the number of mangoes 
-being bought after the discount is applied and then I can multiply that 
-number with the price and get the actual price paid for the mangoes 
-
-with the discount applied. 
-
-Okay so first of all I'll need the mango number and price input. 
-
-Then I'll move on from there 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+I'll return true if they match up and false if they don't. 
 
 
 */
 
-int quantity = 13;
 
-int price = 5;
+// Create the input animal name here 
+string beast = "great blue heron";
 
-
-// Create the sub routine to divide the quantity and floor the result 
-
-// var discount = (int)Math.Floor(quantity / 3);
-var numPairs = (int)Math.Floor((double)quantity / 3); // cast to double
-
-Console.WriteLine("this is the numPairs");
-Console.WriteLine(numPairs);
+string dish = "garlic naan";
 
 
-// Now apply that discount to the price 
+// Turn the names to char Arrays here 
+char[] beastArray = beast.ToCharArray();
 
-int discount  = quantity - numPairs;
+char[] dishArray = dish.ToCharArray();
 
 
-int actualPrice = discount * price;
+// Capture the first element of beastArray here 
+char beastFirst = beastArray[0];
 
-Console.WriteLine("this is the actual price");
-Console.WriteLine(actualPrice); 
+char beastLast = beastArray[beastArray.Length - 1];
+
+
+char dishFirst = dishArray[0];
+char dishLast = dishArray[dishArray.Length - 1]; 
+
+
+
+if(beastFirst == dishFirst && beastLast == dishLast){
+
+
+    Console.WriteLine("this is the first char of Beast name");
+    Console.WriteLine(beastFirst);
+
+    Console.WriteLine("this is the first char of dish");
+    Console.WriteLine(dishFirst);
+
+
+    Console.WriteLine("this is the last char of beast");
+    Console.WriteLine(beastLast);
+    Console.WriteLine("this is the last char of dish");
+    Console.WriteLine(dishLast); 
+    
+    Console.WriteLine("they match up!"); 
+        
+        
+
+
+}
+
+else{
+
+
+    Console.WriteLine("they don't match"); 
+    
+
+}
+
+
+
+
 
 
 
