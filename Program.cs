@@ -35,6 +35,7 @@ else if(isLetterA && isLetterB && isUpperA && isUpperB){
 
     Console.WriteLine("They are both letters and uppercase"); 
 
+ 
 }
 
 if(isLetterA && isLetterB && !isUpperA && !isUpperB){
