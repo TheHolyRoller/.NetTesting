@@ -233,7 +233,7 @@ And this should be added onto the large negative number.
 
 
 // int input = 12;
-int input = -272459; 
+int input = -413797; 
 
 if(input == 0){
     Console.WriteLine("zero"); 
@@ -310,6 +310,7 @@ String newInput = input.ToString();
 
     Console.WriteLine("this is the final number");
     Console.WriteLine(finalNum);
+
 
     int returnValue = input + difference;
 
