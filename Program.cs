@@ -4,31 +4,10 @@ using System.Collections.Generic;
 using System.Diagnostics.Metrics;
 using System.Globalization;
 using System.Text;
+using System.Linq.Expressions;
+using System.Threading.Tasks.Dataflow;
 
 /*
-
-Okay so this seems like a pretty simple 
-
-problem. 
-
-I'm given three arguments. 
-
-The first argument is is a boolean 
-variable which is true or false. 
-
-And then the other two are functions. 
-
-Now if the boolean variable is false then 
-
-the second function is called. 
-
-If the boolean variable is true then 
-the first function is called. 
-
-
-Okay so pretty simple. 
-
-
 
 
 
@@ -37,40 +16,58 @@ Okay so pretty simple.
 
 
 
-bool condition = true; 
+int num = 4843000;
 
 
- static void Run(){
+// Now turn the integer into a string 
+String strNum = num.ToString();
 
-        Console.WriteLine("the boolean value was true"); 
+
+// turn the string into a char Array 
+char[] charArr = strNum.ToCharArray();
+
+List<char> list = new List<char>(); 
+
+bool notZero = true; 
+
+// Now loop through the character Array
+for(int i = charArr.Length - 1; i > -1; i--){
+ 
+ if(!notZero){
+                
+                list.Add(charArr[i]);
+
+        Console.WriteLine("the character is not zero");
+        Console.WriteLine(charArr[i]); 
         
-
-
+                
 }
 
 
-static void False(){
+ else if(charArr[i] == '0' && notZero ){
 
-        Console.WriteLine("the boolean value was false"); 
-        
-
-
+                Console.WriteLine("the character is a zero");
+                Console.WriteLine(charArr[i]); 
 }
 
 
-if(condition){
-
-        Run(); 
-        
+if(charArr[i] != '0' && notZero){
+                
+                notZero = false;
+                list.Add(charArr[i]); 
+                
+}
 
 }
 
-else{
+Console.WriteLine("this is the resulting list");
+Console.WriteLine(list);
 
-        False(); 
-        
+String res = String.Join(", ", list); 
 
-}
+
+Console.WriteLine("this is the altered string");
+Console.WriteLine(res); 
 
 
 Console.WriteLine("Hello World!"); 
