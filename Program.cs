@@ -10,227 +10,94 @@ using System.Threading.Tasks.Dataflow;
 
 /*
 
-Okay so this is the problem that needs to be solved. 
 
-First of all I'm give a string. 
 
-This string consists of upper & lower case letters 
-as well as numbers & characters. 
+Okay so it seems like the task is pretty simple. 
 
-The task is to keep track of the number 
-of upper case lower case numbers & characters there 
-are in the string. 
 
-Then those numbers are then placed into a list one by 
+I need to purge the numbers from a string. 
 
-one. 
+So if it's just a string of numbers then I don't do anything. 
 
-Okay so the order is uppercase letters then lower case letters and then 
+But if there is a number then you remove it. 
 
-numbers and then characters. 
 
-That is the order the numbers should go into the array in. 
+Okay so basically I need a way of determining if a string contains any letters. 
 
+Then if it doesn't I just return that string. 
 
-Okay so let's work out how we're going to keep track of the 
+If it does however I just convert the string to a char Array and 
 
-the occurrences of upper case letters. 
+then loop through the char array and add all letters to a list. 
 
-The first thing that comes to mind is a for loop. 
+Then convert that list to a string and return that String. 
 
-So turn the string into a character Array and then loop through the 
 
-character Array and then check each character and if it's an uppercase 
-letter and if it is increment a variable. 
 
 
 
-One way of making sure that the right variable goes into the right place 
-is by having a counter variable and then after adding the numbers into 
-the first value of the counter variable we increment the counter variable 
 
-then we have the other occurrence variable into the list using the 
-current value of the counter variable and then we increment it. 
 
-Okay so there's been a change of plans. 
 
-To start with I can't actually just check if an element is a character. 
 
-It seems as though C# is more light weight and so therefore I'll 
 
-need to run each element through multiple different regex expressions. 
 
-Okay so that's great. 
 
 
-First of all I need to check if it's a capital letter and if not then 
+*/ 
 
-I'll check if it's a letter and then I'll check if it's a number then a symbol. 
 
-If any one of these checks matches then I'll increment the right counter 
+string s = "aa1bb2cc3dd"; 
+bool containsLetters = s.Any(char.IsLetter);
+List<char> list = new List<char>(); 
 
 
-variable. 
+if(containsLetters){
 
-That way I can check if an element is uppercase and a letter instead 
 
-of having false matches with letters that are uppercase but also letters. 
+    // Now extract the numbers from the text 
+    char[] chars = s.ToCharArray(); 
+    
+    foreach(var elem in chars){
+    
+    if(Char.IsDigit(elem)){
 
-Okay so the way I'll do this is with multiple 
+            list.Add(elem); 
 
-regex expressions and in the foreach loop I'll check each element to see if 
-it matches up. 
+    }
+    
+    else{
+    
+    Console.WriteLine("we found a character"); 
+    
+    }
+    
+    
+    }
 
-So what I'll do is I'll create all the regex expressions 
-and I'll create several different boolean variables and then I'll 
 
 
-I'll assign the value of those boolean variables to whatever the result is 
+    String res = String.Join("", list); 
 
-given the current element. 
 
-Then in my checks I'll check each boolean variable to see if it's true. 
-
-And if one of them is true I'll make the necessary changes and increment 
-
-the counter variable. 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-*/
-
-
-// Put the input string here 
-
-String s = "bgA5<1d-tOwUZTS8yQ";
-
-Console.WriteLine("this is the input string");
-Console.WriteLine(s); 
-
-
-
-
-// Now turn the string into a character Array. 
-
-char[] chars = s.ToCharArray();
-
-// Create the counter variables here 
-int upperChar = 0;
-
-int lowerChar = 0;
-
-int num = 0;
-
-int sym = 0;
-
-int[] res = new int[4]; 
-
-
-
-// Now loop through the character Array 
-
-foreach(var elem in chars){
-
-// Check to see if elem is a character 
-if(Char.IsLetter(elem) && Char.IsUpper(elem)){
-
-        upperChar++;
-        Console.WriteLine("this is the new value of upperChar");
-        Console.WriteLine(upperChar); 
-
-}
-
-if(Char.IsLetter(elem) && Char.IsLower(elem)){
-
-        lowerChar++;
-        Console.WriteLine("this is the new value of lower char");
-        Console.WriteLine(lowerChar); 
-
-}
-
-if(Char.IsDigit(elem)){
-
-        num++;
-        Console.WriteLine("this is the new value of num");
-        Console.WriteLine(num); 
-
-}
-
-if(Char.IsSymbol(elem) || Char.IsPunctuation(elem) || Char.IsSeparator(elem)){
-
-       sym++;
-        Console.WriteLine("this is the new value of sym");
-        Console.WriteLine(sym);
-        
+    Console.WriteLine("this is the filtered number");
+    Console.WriteLine(res); 
 
 }
 
 else{
-
-        Console.WriteLine("there were not matches"); 
-        
-
-}
-
+    Console.WriteLine(s); 
+    
 }
 
 
-// Now add each incremented variable to the Array; 
-
-res[0] = upperChar;
-
-res[1] = lowerChar;
-res[2] = num;
-
-res[3] = sym;
-
-Console.WriteLine("this is the number of uppper chars");
-Console.WriteLine(upperChar);
-
-Console.WriteLine("this is the number of lower chars");
-Console.WriteLine(lowerChar);
-
-Console.WriteLine("this is the number of integers");
-Console.WriteLine(num);
 
 
-Console.WriteLine("this is the number of symbols");
-Console.WriteLine(sym); 
 
-foreach(var elem in res){
 
-    Console.WriteLine("this is the current element of result Array");
-    Console.WriteLine(elem); 
 
-}
+
+
 
 
 
