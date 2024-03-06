@@ -8,29 +8,25 @@ using System.Linq.Expressions;
 using System.Threading.Tasks.Dataflow;
 
 
+
 /*
 
+Okay so the task appears to be quite simple. 
+
+The Task is to take a string an flip the case of the letters. 
+
+So if one letter is uppercase then flip it to lower case. 
+
+If one letter is lower case then change it to uppercase. 
 
 
-Okay so it seems like the task is pretty simple. 
+Okay so the way I'm going to do this is I'm going to take the string. 
 
 
-I need to purge the numbers from a string. 
+Then I'm going to turn it into a character Array. 
 
-So if it's just a string of numbers then I don't do anything. 
-
-But if there is a number then you remove it. 
-
-
-Okay so basically I need a way of determining if a string contains any letters. 
-
-Then if it doesn't I just return that string. 
-
-If it does however I just convert the string to a char Array and 
-
-then loop through the char array and add all letters to a list. 
-
-Then convert that list to a string and return that String. 
+Then I'm going to loop through that character Array checking if each element is 
+upper or lower case and I'm just going to flip the case of each one. 
 
 
 
@@ -43,62 +39,51 @@ Then convert that list to a string and return that String.
 
 
 
+*/
 
-*/ 
+
+// Add in the string here 
+String s = "Hello World";
 
 
-string s = "aa1bb2cc3dd"; 
-bool containsLetters = s.Any(char.IsLetter);
+char[] chars = s.ToCharArray();
 List<char> list = new List<char>(); 
 
 
-if(containsLetters){
+foreach(var elem in chars){
 
 
-    // Now extract the numbers from the text 
-    char[] chars = s.ToCharArray(); 
-    
-    foreach(var elem in chars){
-    
-    if(Char.IsDigit(elem)){
-
-            list.Add(elem); 
-
-    }
-    
-    else{
-    
-    Console.WriteLine("we found a character"); 
-    
-    }
-    
-    
-    }
+if(Char.IsUpper(elem)){
 
 
-
-    String res = String.Join("", list); 
-
-
-    Console.WriteLine("this is the filtered number");
-    Console.WriteLine(res); 
+      char lower =  Char.ToLower(elem);
+        list.Add(lower);
 
 }
 
-else{
-    Console.WriteLine(s); 
-    
+else if(Char.IsLower(elem)){
+
+    char upper =  Char.ToUpper(elem);
+        list.Add(upper); 
+        
+
 }
 
 
+}
+
+// Turn the character Array into a string here 
+
+String res = new String(chars);
 
 
+String result = String.Join("", list);
+Console.WriteLine("this is the result");
+Console.WriteLine(result); 
 
 
-
-
-
-
+Console.WriteLine("this is the inverted string");
+Console.WriteLine(res); 
 
 
 Console.WriteLine("Hello World!"); 
