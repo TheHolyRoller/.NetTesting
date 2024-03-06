@@ -47,43 +47,30 @@ String s = "Hello World";
 
 
 char[] chars = s.ToCharArray();
-List<char> list = new List<char>(); 
+List<char> list = new List<char>();
+
+char[] returnArray = new char[s.Length]; 
+      StringBuilder sb = new StringBuilder();
+
+for(int i = 0; i < s.Length - 1; i++){
 
 
-foreach(var elem in chars){
-
-
-if(Char.IsUpper(elem)){
-
-
-      char lower =  Char.ToLower(elem);
-        list.Add(lower);
-
-}
-
-else if(Char.IsLower(elem)){
-
-    char upper =  Char.ToUpper(elem);
-        list.Add(upper); 
+if(Char.IsUpper(chars[i])){
         
+        sb.Append(Char.ToLower(chars[i]));
+          continue;
+
+}
+
+ sb.Append(Char.ToUpper(chars[i]));
+
 
 }
 
 
-}
-
-// Turn the character Array into a string here 
-
-String res = new String(chars);
+Console.WriteLine("this should work");
+Console.WriteLine("this is the returned String"); 
+Console.WriteLine(sb.ToString()); 
 
 
-String result = String.Join("", list);
-Console.WriteLine("this is the result");
-Console.WriteLine(result); 
-
-
-Console.WriteLine("this is the inverted string");
-Console.WriteLine(res); 
-
-
-Console.WriteLine("Hello World!"); 
+// Console.WriteLine("Hello World!"); 
