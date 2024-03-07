@@ -46,6 +46,9 @@ upper or lower case and I'm just going to flip the case of each one.
 String s = "Hello World";
 
 
+
+
+
 char[] chars = s.ToCharArray();
 List<char> list = new List<char>();
 
