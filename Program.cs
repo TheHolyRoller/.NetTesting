@@ -49,11 +49,14 @@ String s = "Hello World";
 
 
 
+
+
+
 char[] chars = s.ToCharArray();
 List<char> list = new List<char>();
 
-char[] returnArray = new char[s.Length]; 
-      StringBuilder sb = new StringBuilder();
+// char[] returnArray = new char[s.Length]; 
+//       StringBuilder sb = new StringBuilder();
 
 for(int i = 0; i < s.Length - 1; i++){
 
