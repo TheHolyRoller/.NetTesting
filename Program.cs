@@ -58,6 +58,7 @@ List<char> list = new List<char>();
 // char[] returnArray = new char[s.Length]; 
 //       StringBuilder sb = new StringBuilder();
 
+
 for(int i = 0; i < s.Length - 1; i++){
 
 
@@ -67,6 +68,9 @@ if(Char.IsUpper(chars[i])){
           continue;
 
 }
+
+
+
 
  sb.Append(Char.ToUpper(chars[i]));
 
